@@ -267,7 +267,13 @@ node* node::insertR(int k){
 }
 
 void node::inOrder(){
-
+     if(this->lchild!=NULL){
+        this->lchild->inOrder();
+    }
+    cout<<this->data<<" ";
+    if(this->rchild!=NULL){
+        this->rchild->inOrder();
+    }
 }
 
 
