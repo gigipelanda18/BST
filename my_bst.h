@@ -6,12 +6,12 @@ class node{
 
     public:
     int data;
-    int weigth;
+    int weight;
     node *lchild;
     node *rchild;
     node(int k){
         data=k;
-        weigth=1;
+        weight=1;
         lchild=nullptr;
         rchild=nullptr;
     }
@@ -28,6 +28,9 @@ class node{
     int max(int sl,int sr);
     int height(node *r);
     node* Preorder_Traversal_Test(node* root);
+
+    node* insertR(int k);
+    void inOrder(); 
 };
 
 

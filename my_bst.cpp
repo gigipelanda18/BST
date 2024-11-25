@@ -9,7 +9,7 @@ node*  node::insert_r(node *root, int k){
         return new node(k);
     }
     if(root->data==k){
-        root->weigth++;
+        root->weight++;
         return root;
     }
     if(root->data>k){
@@ -38,7 +38,7 @@ node* node::insert_i(node* root, int k){
         }
         if(current->data==k){
             check=false;
-            current->weigth++;
+            current->weight++;
             return root;
         }
         if(current->data>k){
@@ -244,6 +244,30 @@ node* node::Preorder_Traversal_Test(node* root){
         cout << "non e un BST";
     }
     return root;
+}
+
+node* node::insertR(int k){
+    if (k==this->data){
+        this->weight++;
+        return this;
+    }
+    if (k<this->data){
+        if (this->lchild == NULL){
+            this->lchild= new node (k);
+        } else{
+            this->lchild= this->lchild->insertR(k);
+        }
+    } else if (this->rchild== NULL){
+        this->rchild= new node(k);
+    } else {
+        this->rchild= this->rchild->insertR(k);
+    }
+    return this;
+
+}
+
+void node::inOrder(){
+
 }
 
 
