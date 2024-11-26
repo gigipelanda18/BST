@@ -1,35 +1,35 @@
 #ifndef _MY_BST.H_
 #define _MY_BST.H_
 
-class node{
+class Node{
     private:
 
     public:
     int data;
     int weight;
-    node *lchild;
-    node *rchild;
-    node(int k){
+    Node *lchild;
+    Node *rchild;
+    Node(int k){
         data=k;
         weight=1;
         lchild=nullptr;
         rchild=nullptr;
     }
 
-    node* insert_r(node *root, int k);
-    node* insert_i(node* root, int k);
-    node* search_r(node *root, int k);
-    node* search_i(node* root, int k);
-    node* cancel_r(node *root, int k);
-    node* cancel_i(node* root, int k);
-    node* Inorder_Traversal(node*r);
-    node* Preorder_Traversal(node*r);
-    node* Postorder_Traversal(node*r);
+    Node* insert_r(Node *root, int k);
+    Node* insert_i(Node* root, int k);
+    Node* search_r(Node *root, int k);
+    Node* search_i(Node* root, int k);
+    Node* cancel_r(Node *root, int k);
+    Node* cancel_i(Node* root, int k);
+    Node* Inorder_Traversal(Node*r);
+    Node* Preorder_Traversal(Node*r);
+    Node* Postorder_Traversal(Node*r);
     int max(int sl,int sr);
-    int height(node *r);
-    node* Preorder_Traversal_Test(node* root);
+    int height(Node *r);
+    Node* Preorder_Traversal_Test(Node* root);
 
-    node* insertR(int k);
+    Node* insertR(int k);
     void inOrder(); 
 };
 

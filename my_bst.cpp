@@ -4,9 +4,9 @@ using namespace std;
 
 
 // creazione nodo ricorsivo
-node*  node::insert_r(node *root, int k){
+Node*  Node::insert_r(Node *root, int k){
     if(root==nullptr){
-        return new node(k);
+        return new Node(k);
     }
     if(root->data==k){
         root->weight++;
@@ -20,18 +20,18 @@ node*  node::insert_r(node *root, int k){
 }
 
 // creazione nodo iterativo
-node* node::insert_i(node* root, int k){
+Node* Node::insert_i(Node* root, int k){
     bool check{true};
-    node*current=root;
-    node*father=nullptr;
+    Node*current=root;
+    Node*father=nullptr;
     do{
         if(current==nullptr){
             if(father->data>k){
-                father->lchild=new node(k);
+                father->lchild=new Node(k);
                 check=false;
                 return root;
             }else{
-                father->rchild=new node(k);
+                father->rchild=new Node(k);
                 check=false;
                 return root;
             }
@@ -53,7 +53,7 @@ node* node::insert_i(node* root, int k){
 }
 
 //cerco nodo con ricorsione
-node* node::search_r(node *root, int k){
+Node* Node::search_r(Node *root, int k){
     if(root==nullptr){
         cout << "nodo non trovato";
         return root;
@@ -71,7 +71,7 @@ node* node::search_r(node *root, int k){
 }
 
 //cerca nodo con iterazione NON HO USATO FATHER E CURRENT
-node* node::search_i(node* root, int k){
+Node* Node::search_i(Node* root, int k){
     bool check{true};
     do{
     if(root==nullptr){
@@ -94,7 +94,7 @@ node* node::search_i(node* root, int k){
 }
 
 //cancellazione nodo con ricorsione 
-node* node::cancel_r(node *root, int k){
+Node* Node::cancel_r(Node *root, int k){
     if(root==nullptr){
         cout << "nodo non trovato";
         return root;
@@ -105,7 +105,7 @@ node* node::cancel_r(node *root, int k){
             return root;
         }
         if(root->rchild!=nullptr){
-            node* temp=root;
+            Node* temp=root;
             root->data=root->rchild->data;
             root->rchild->data=temp->data;
             root->rchild->data=0;
@@ -113,7 +113,7 @@ node* node::cancel_r(node *root, int k){
             return root;
         }
         if(root->lchild!=nullptr){
-            node* temp=root;
+            Node* temp=root;
             root->data=root->lchild->data;
             root->lchild->data=temp->data;
             root->lchild->data=0;
@@ -129,7 +129,7 @@ node* node::cancel_r(node *root, int k){
 }
 
 //cancellazione nodo con iterazione
-node* node::cancel_i(node* root, int k){
+Node* Node::cancel_i(Node* root, int k){
     bool check{true};
     do{
     if(root==nullptr){
@@ -141,7 +141,7 @@ node* node::cancel_i(node* root, int k){
             delete root;
         }
         if(root->rchild!=nullptr){
-            node*temp=root;
+            Node*temp=root;
             root->data = root->rchild->data;
             root->rchild->data=temp->data;
             root->rchild->data=0;
@@ -150,7 +150,7 @@ node* node::cancel_i(node* root, int k){
             return root;
         }
         if(root->lchild!=nullptr){
-            node*temp=root;
+            Node*temp=root;
             root->data = root->lchild->data;
             root->lchild->data=temp->data;
             root->lchild->data=0;
@@ -163,7 +163,7 @@ node* node::cancel_i(node* root, int k){
 }
 
 // scorrimento ricorsivo Inorder_Traversal
-node* node::Inorder_Traversal(node*r){
+Node* Node::Inorder_Traversal(Node*r){
     if(r==NULL){
         cout<<"L'albero è vuoto"<<endl;
     }else{
@@ -179,7 +179,7 @@ node* node::Inorder_Traversal(node*r){
 }
 
 // scorrimento ricorsivo Preorder traversal
-node* node::Preorder_Traversal(node*r){
+Node* Node::Preorder_Traversal(Node*r){
     if(r==NULL){
         cout<<"L'albero è vuoto"<<endl;
     } else{
@@ -195,7 +195,7 @@ node* node::Preorder_Traversal(node*r){
 }
 
 // scorrimento ricorsivo Postorder traversal
-node* node::Postorder_Traversal(node*r){
+Node* Node::Postorder_Traversal(Node*r){
     if(r==NULL){
         cout<<"L'albero è vuoto"<<endl;
     } else{
@@ -211,13 +211,13 @@ node* node::Postorder_Traversal(node*r){
 }
 
 // calcolo dei livelli
-int node::max(int sl,int sr){
+int Node::max(int sl,int sr){
     if (sl>sr){
         return sl;
     } else
     return sr;
 }
-int node::height(node *r){
+int Node::height(Node *r){
     if(r==NULL){
         return 0;
     }
@@ -227,7 +227,7 @@ int node::height(node *r){
 }
 
 //verifica di un albero se e un BST
-node* node::Preorder_Traversal_Test(node* root){
+Node* Node::Preorder_Traversal_Test(Node* root){
     if(root==NULL){
         cout << "l'albero e vuoto";
         return root;
@@ -246,19 +246,19 @@ node* node::Preorder_Traversal_Test(node* root){
     return root;
 }
 
-node* node::insertR(int k){
+Node* Node::insertR(int k){
     if (k==this->data){
         this->weight++;
         return this;
     }
     if (k<this->data){
         if (this->lchild == NULL){
-            this->lchild= new node (k);
+            this->lchild= new Node (k);
         } else{
             this->lchild= this->lchild->insertR(k);
         }
     } else if (this->rchild== NULL){
-        this->rchild= new node(k);
+        this->rchild= new Node(k);
     } else {
         this->rchild= this->rchild->insertR(k);
     }
@@ -266,7 +266,7 @@ node* node::insertR(int k){
 
 }
 
-void node::inOrder(){
+void Node::inOrder(){
      if(this->lchild!=NULL){
         this->lchild->inOrder();
     }
