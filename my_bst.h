@@ -30,6 +30,9 @@ class Node{
     Node* Preorder_Traversal_Test(Node* root);
 
     Node* insertR(int k);
+    Node* insertI(int k);  
+    bool searchI(int k); 
+    bool searchR(int k); 
     void inOrder(); 
 };
 
