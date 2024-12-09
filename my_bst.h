@@ -9,11 +9,24 @@ class Node{
     int weight;
     Node *lchild;
     Node *rchild;
+    
     Node(int k){
         data=k;
         weight=1;
         lchild=nullptr;
         rchild=nullptr;
+    }
+
+    friend ostream &operator<<(ostream &os, Node *r){
+        os << "Valore della root: " << r->data <<endl;
+        os << "Weight della root: " << r->weight <<endl;
+        return os;
+    }
+
+    friend istream &operator>>(istream &is, Node *r){
+        int value;
+        is >> value;
+        return is;
     }
 
     Node* insert_r(Node *root, int k);
