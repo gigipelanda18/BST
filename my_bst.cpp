@@ -280,7 +280,6 @@ bool Node::searchI(int k){
     bool check{true};
     Node *current{this};
     while (check){
-
         if (current==NULL){
             cout << "non trovato" << " ";
             return false;
@@ -340,5 +339,78 @@ Node* Node::insertI(int k) {
     }
     return this;
 }
+
+void Node:: preOrder(){
+    cout<<this->data<<" ";
+    if(this->lchild!=NULL){
+        this->lchild->preOrder();
+    }
+    if(this->rchild!=NULL){
+        this->rchild->preOrder();
+    }
+}
+
+void Node:: postOrder(){
+    if(this->lchild!=NULL){
+        this->lchild->postOrder();
+    }
+    if(this->rchild!=NULL){
+        this->rchild->postOrder();
+    }
+    cout<<this->data<<" ";
+}
+
+Node* Node::deleteNode(int k) {
+    if (this->data==NULL){
+        cout << "nodo non trovato" << endl;
+        return this;
+    }
+    if (k==this->data){
+        if (this->lchild==NULL && this->rchild==NULL){
+            delete this;
+            return this;
+        } else if(this->lchild!=NULL && this->rchild==NULL){
+            Node* temp;
+            temp->data=this->data;
+            this->data=this->lchild->data;
+            this->lchild->data=temp->data;
+            delete this->lchild;
+            return this;
+        } else if(this->lchild==NULL && this->rchild!=NULL){
+            Node* temp;
+            temp->data=this->data;
+            this->data=this->rchild->data;
+            this->rchild->data=temp->data;
+            delete this->rchild;
+            return this;
+        }
+    }
+    if (k<this->data){
+        this->lchild= this->lchild->insertR(k);
+    } else {
+        this->rchild= this->rchild->insertR(k);
+    }
+    return this;
+}
+
+bool Node:: isBst(){
+    if(this==NULL){
+        cout << "l'albero e vuoto";
+        return true;
+    }
+    if(this->lchild!=NULL && this->lchild->data<this->data){
+        return this->lchild->isBst();
+    }else if(this->lchild!=NULL && this->lchild->data>this->data){
+        return false;
+    }
+    if(this->rchild!=NULL && this->rchild->data>this->data){
+        return this->rchild->isBst();
+    }else if(this->rchild!=NULL && this->rchild->data<this->data){
+        return false;
+    }
+    return true;
+}
+
+
 
 

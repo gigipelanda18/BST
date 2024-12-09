@@ -34,6 +34,11 @@ class Node{
     bool searchI(int k); 
     bool searchR(int k); 
     void inOrder(); 
+
+    void preOrder();
+    void postOrder();
+    Node* deleteNode(int k);
+    bool isBst();
 };
 
 
